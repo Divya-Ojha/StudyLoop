@@ -1,0 +1,67 @@
+/* Dark Theme Styles */
+body.dark-theme {
+    background: #121212;
+    color: #ffffff;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Navbar */
+body.dark-theme .navbar {
+    background: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme .nav-link {
+    color: #00aaff !important;
+}
+
+body.dark-theme .navbar-toggler-icon {
+    filter: invert(1); /* Makes the navbar toggle icon visible in dark mode */
+}
+
+/* Container Styling */
+body.dark-theme .container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 60px;
+}
+
+/* Buttons */
+body.dark-theme .btn-primary {
+    background: linear-gradient(135deg, #00aaff, #0077cc);
+    border-color: #0077cc;
+}
+
+body.dark-theme .btn-primary:hover {
+    background: linear-gradient(135deg, #0077cc, #0055aa);
+}
+
+/* Fade-in Animation */
+body.dark-theme {
+    animation: fadeIn 0.5s ease-in-out;
+}
+/* Default Logo Color */
+.logo {
+    width: 45px;
+    height: 45px;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Dark Theme - Make Logo Brighter */
+.dark-theme .logo {
+    filter: invert(1); /* Inverts the colors to appear bright */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
