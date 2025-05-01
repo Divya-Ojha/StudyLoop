@@ -61,9 +61,10 @@ app.get('/videochat', (req, res) => {
 app.get('/videochat/:room', (req, res) => {
   res.render('room', { roomId: req.params.room });
 });
+
 // ✅ Signup Route
 app.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password,subject} = req.body;
   console.log('Signup Request:', req.body);
   try {
     const existingUser = await Users.findOne({ $or: [{ username }, { email }] });
@@ -71,7 +72,7 @@ app.post('/signup', async (req, res) => {
       return res.status(400).send('Username or email already exists.');
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new Users({ username, email, password: hashedPassword });
+    const user = new Users({ username, email, password: hashedPassword, subject });
     await user.save();
     res.status(201).send('User signed up successfully.');
   } catch (err) {
@@ -79,6 +80,9 @@ app.post('/signup', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+app.get('/tutors',(req,res)=>{
+  res.sendFile('templates/tutors.html', { root: __dirname });
+})
 
 // ✅ Login Route
 app.post('/login', async (req, res) => {
@@ -102,6 +106,36 @@ app.post('/login', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+app.get("/api/tutors", async (req, res) => {
+  try {
+      const tutors = await Users.find().select("username subject ratings reviews -_id");
+      res.json(tutors);
+  } catch (error) {
+      res.status(500).json({ error: "Failed to fetch tutors" });
+  }
+});
+app.post("/api/book-slot", async (req, res) => {
+  const { username, time,day } = req.body;
+
+  try {
+    const user = await Users.findOne({ username });
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    const slot = user.slots.find(s => s.time === time &&s.day==day);
+    if (!slot) return res.status(404).json({ error: "Slot not found" });
+
+    if (slot.isBooked) return res.status(400).json({ error: "Slot already booked" });
+
+    slot.isBooked = true;
+    await user.save();
+    res.json({ message: "Slot booked successfully!" });
+
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+
 
 // ✅ Create Server & PeerJS
 const server = http.createServer(app);

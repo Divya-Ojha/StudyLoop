@@ -4,10 +4,11 @@ const signupForm=document.getElementById('signupForm')?.addEventListener('submit
     let username=document.getElementById('username').value
     let password=document.getElementById('password').value
     let email=document.getElementById('email').value
+    let subject=document.getElementById('subject').value
     const response = await fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username,  email, password }),
+      body: JSON.stringify({ username,  email, password ,subject}),
     });
 
     const message = await response.text();

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            overflow: hidden;
+        }
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .wave-container {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            overflow: hidden;
+            line-height: 0;
+            height: 200px;
+        }
+        .wave {
+            position: absolute;
+            width: 300%; /* Increased width to cover entire width smoothly */
+            height: 100%;
+            background: linear-gradient(to right, #ffffff40, #ffffff20);
+            clip-path: path('M0,120 C200,80 400,160 600,120 C800,80 1000,160 1200,120 C1400,80 1600,160 1800,120 L1800,200 L0,200 Z');
+            animation: waveMove 12s infinite linear, waveFloat 6s infinite ease-in-out;
+        }
+        .wave:nth-child(2) {
+            opacity: 0.5;
+            animation: waveMove 14s infinite linear reverse, waveFloat 7s infinite ease-in-out;
+        }
+        .wave:nth-child(3) {
+            opacity: 0.3;
+            animation: waveMove 16s infinite linear, waveFloat 8s infinite ease-in-out;
+        }
+        
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); } /* Adjusted to match the increased width */
+        }
+        
+        @keyframes waveFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="layer"></div>
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+</body>
+</html>

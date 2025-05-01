@@ -1,70 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peer-to-Peer Tutor Platform</title>
+  <title>StudyLoop - Learn & Teach</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="../styles/dark-theme.css">
-</head>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Dark Purple and White Theme */
+    :root {
+      --primary-color: #6a0dad;  /* Dark Purple */
+      --secondary-color: #ffffff; /* White */
+      --bg-light: #ffffff;  /* White for main content */
+      --text-dark: #4b0082; /* Deep Purple for text */
+      --text-light: #ffffff; /* White text */
+    }
 
+    body {
+      background-color: var(--bg-light); /* White background for body */
+      color: var(--text-dark); /* Dark purple text */
+    }
+
+    .navbar {
+      background-color: var(--primary-color); /* Dark Purple */
+    }
+
+    .navbar-brand, .nav-link {
+      color: var(--secondary-color) !important; /* White text */
+    }
+
+    .nav-link:hover {
+      color: var(--secondary-color) !important;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      color: var(--text-dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+    /* Hero Section Updated to White Background */
+    .hero-section {
+      background-color: var(--bg-light); /* White background */
+      color: var(--text-dark); /* Dark Purple text */
+    }
+    .hero-section h1 {
+    text-shadow: none; /* Remove the shadow from the text */
+  }
+
+  .card {
+  background-color: var(--bg-light); /* White background */
+  border: 2px solid var(--primary-color); /* Dark purple border */
+  margin: 15px; /* Adds spacing around each card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+    footer {
+      background-color: var(--primary-color); /* Dark Purple */
+      color: var(--secondary-color); /* White text in footer */
+    }
+
+    /* Fix alignment for Sign Up & Login */
+    .auth-links {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">TutorConnect</a>
+      
+      <!-- Logo & Name (Extreme Left) -->
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+        <img src="../media/StudyLoop.png" alt="StudyLoop Logo" width="80" height="80" class="me-2">
+        StudyLoop
+      </a>
+      
+      <!-- Navbar Toggle Button for Mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="signup">Sign Up</a></li>
-          <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+
+      <!-- Navbar Links (Centered) -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="tutors">Find a Tutor</a></li>
         </ul>
       </div>
+
+      <!-- Sign Up & Login (Extreme Right) - Aligned in Same Line -->
+      <div class="auth-links ms-auto">
+        <a class="nav-link me-3" href="signup">Sign Up</a>
+        <a class="btn btn-primary" href="login">Login</a>
+      </div>
+
     </div>
   </nav>
-
-  <div class="container text-center mt-5">
-    <h1>Welcome to TutorConnect</h1>
-    <p>Find the perfect tutor or help others by sharing your knowledge!</p>
-    <a href="signup" class="btn btn-primary">Get Started</a>
+  <header class="hero-section text-center py-5">
+    <div class="container">
+      <h1 style="color:var(--primary-color);font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Learn from the Best, Teach the Rest</h1>
+      <p class="lead">Join our peer-to-peer learning community and elevate your skills.</p>
+      <a href="signup" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../media/ConnectOnline.png" class="d-block w-100" alt="Feature 1" width="700" height="600">
+          <div class="carousel-caption d-none d-md-block" style="background-color:#6a0dad;">
+            <h5>Collaborative Learning</h5>
+            <p>Engage with learners across various subjects.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../media/Book_Now.png" class="d-block w-100" alt="Feature 2" width="700" height="600" >
+          <div class="carousel-caption d-none d-md-block" style="background-color:#6a0dad;">
+            <h5>Online & Interactive</h5>
+            <p>Access live sessions and study together.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../media/Ratings.png" class="d-block w-100" alt="Feature 3" width="700" height="600">
+          <div class="carousel-caption d-none d-md-block" style="background-color:#6a0dad;">
+            <h5>Earn Ratings</h5>
+            <p>Earn stars for completing lessons and mentoring others.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </div>
-  <script>
-    var icon = document.createElement("img");
-    icon.src = "../media/moon.png";
-    icon.id = "mode";
-    icon.style.cursor = "pointer";
-    icon.style.width = "40px";
-    icon.style.height = "40px";
-    document.querySelector(".container-fluid").appendChild(icon);
-  
-    function toggleTheme() {
-      document.body.classList.toggle("dark-theme");
-  
-      if (document.body.classList.contains("dark-theme")) {
-        localStorage.setItem("theme", "dark");
-        icon.src = "../media/sun.png";
-      } else {
-        localStorage.setItem("theme", "light");
-        icon.src = "../media/moon.png";
-      }
-    }
-  
-    // Apply the saved theme on page load
-    window.onload = function () {
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-theme");
-      }
-    };
-  
-    // Attach event listener to mode toggle button
-    icon.addEventListener("click", toggleTheme);
-  </script>
-  
+
+  <section id="features" class="container text-center py-5">
+    <h2 class="fw-bold">Why Choose StudyLoop?</h2>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4 shadow rounded">
+          <i class="fas fa-certificate fa-3x text-warning"></i>
+          <h4 class="mt-3">No Teacher-Student Policy</h4>
+          <p>You can teach! You can learn!</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 shadow rounded">
+          <i class="fas fa-users fa-3x text-primary"></i>
+          <h4 class="mt-3">Collaborative Learning</h4>
+          <p>Engage with learners across various subjects.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 shadow rounded">
+          <i class="fas fa-laptop fa-3x text-success"></i>
+          <h4 class="mt-3">Online & Interactive</h4>
+          <p>Access live sessions and study together.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 shadow rounded">
+          <i class="fas fa-certificate fa-3x text-warning"></i>
+          <h4 class="mt-3">Ratings</h4>
+          <p>Earn stars for completing lessons and mentoring others.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <footer class="text-center py-3">
+    <p>&copy; 2025 StudyLoop. All rights reserved.</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

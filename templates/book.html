@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Study Slot</title>
+    <script src="/booking.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f3ff;
+            color: #4c1d95;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #6a0dad;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #6a0dad;
+        }
+        button {
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5a0cb1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Study Slot</h1>
+        <label for="slots">Choose a Slot:</label>
+        <select id="slots">
+            <option value="Monday 10:00 AM">Monday - 10:00 AM</option>
+            <option value="Wednesday 2:00 PM">Wednesday - 2:00 PM</option>
+            <option value="Friday 5:00 PM">Friday - 5:00 PM</option>
+        </select>
+        <button onclick="bookSlot()">Book Now</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function bookSlot() {
+            let slot = document.getElementById("slots").value;
+            document.getElementById("message").innerText = "Slot " + slot + " booked successfully!";
+        }
+    </script>
+</body>
+</html>
